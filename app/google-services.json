@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "308081648582",
+    "project_id": "hospital-7ba52",
+    "storage_bucket": "hospital-7ba52.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:308081648582:android:3e421f997248e3b50188c7",
+        "android_client_info": {
+          "package_name": "com.example.hospital.joydip"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "308081648582-482oc3rfup9k5jecm6i8k9ji4v7sm0lr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_Ma7kDTiRqXs4cjcxTvtgzwMM4DHz2No"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "308081648582-482oc3rfup9k5jecm6i8k9ji4v7sm0lr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

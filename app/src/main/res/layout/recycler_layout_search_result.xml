@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:elevation="10dp"
+    android:showDividers="end"
+    android:layout_margin="8dp"
+    android:background="#F9F9FA"
+    >
+
+    <TextView
+        android:id="@+id/name_TV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="8dp"
+        android:drawableLeft="@drawable/icon_person"
+        android:gravity="start"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:id="@+id/email_TV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:drawableLeft="@drawable/icon_email"
+        android:gravity="start"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:id="@+id/phone_TV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:drawableLeft="@drawable/icon_phone_number"
+        android:gravity="start"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:id="@+id/available_time_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:drawableLeft="@drawable/ic_shedule"
+        android:gravity="start"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:id="@+id/specialization_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:drawableLeft="@drawable/ic_specitialization"
+        android:gravity="start"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:id="@+id/dept_TV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/ic_dept"
+        android:gravity="start"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        />
+
+
+</LinearLayout>
