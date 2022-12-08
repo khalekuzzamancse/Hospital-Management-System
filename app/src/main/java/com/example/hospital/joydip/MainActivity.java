@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.hospital.joydip.firebasetemplate.CallbackUserProfile;
 import com.example.hospital.joydip.firebasetemplate.DomainUserInfo;
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     FirebaseAuthCustom currentUser;
     DomainUserInfo userInfo;
+    TextView allDoctor;
 
     CallbackUserProfile callbackUserProfile = new CallbackUserProfile() {
         @Override
@@ -50,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseAuthCustom authCustom = new FirebaseAuthCustom();
         authCustom.getUserInfo(callbackUserProfile);
+        allDoctor.setOnClickListener(view -> {
+            startActivity(new Intent(this,SearchResultActivity.class));
+        });
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -111,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.MainActivity_DrawerLayout);
         navigationView = findViewById(R.id.ActivityMain_NavDrawer_NavigationView);
         currentUser = new FirebaseAuthCustom();
+        allDoctor=findViewById(R.id.allDc);
     }
     private void setToolbar() {
         toolbar = findViewById(R.id.ActivityMain_ToolBar);

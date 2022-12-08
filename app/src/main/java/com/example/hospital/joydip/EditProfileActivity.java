@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -105,7 +106,8 @@ public class EditProfileActivity extends AppCompatActivity {
 
         });
         cancelBTN.setOnClickListener(view -> {
-            onBackPressed();
+            finish();
+
         });
 
     }
@@ -179,6 +181,8 @@ public class EditProfileActivity extends AppCompatActivity {
         data.put("availableTime", availableTimeStr);
         String deptStr = deptACTV.getText().toString().trim();
         data.put("dept", deptStr);
+        String spec=specializationACTV.getText().toString().trim();
+        data.put("specialization",spec);
         WritingDocument document = new WritingDocument();
         document.updateDocument(info.email, data, callbackResult);
         Log.i("DataGot", String.valueOf(data));

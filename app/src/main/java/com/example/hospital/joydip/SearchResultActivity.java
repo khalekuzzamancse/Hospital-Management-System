@@ -11,10 +11,12 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.hospital.joydip.firebasetemplate.CallbackDomainList;
 import com.example.hospital.joydip.firebasetemplate.DomainUserInfo;
 import com.example.hospital.joydip.firebasetemplate.UserInfo;
+import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
@@ -23,9 +25,11 @@ public class SearchResultActivity extends AppCompatActivity {
     Toolbar toolbar;
     RecyclerView recycler;
     SearchResultAdapter adapter;
+    CircularProgressIndicator progressIndicator;
     CallbackDomainList callback = List -> {
         //  progressIndicator.setVisibility(View.INVISIBLE);
         //  Log.i("ReceivedData-AllUserInfo", String.valueOf(List));
+        progressIndicator.setVisibility(View.GONE);
         if (List.isEmpty())
             showSnackbar();
         updateAdapter(List);
@@ -42,6 +46,7 @@ public class SearchResultActivity extends AppCompatActivity {
        // setToolbar();
         UserInfo db = new UserInfo();
         db.getDoctors(callback);
+        progressIndicator.setVisibility(View.VISIBLE);
 
 //
 
@@ -77,6 +82,7 @@ public class SearchResultActivity extends AppCompatActivity {
     private void initialize() {
         toolbar = findViewById(R.id.NonHomeActivity_Toolbar);
         recycler = findViewById(R.id.recycler);
+        progressIndicator=findViewById(R.id.progrssbar);
 
     }
 

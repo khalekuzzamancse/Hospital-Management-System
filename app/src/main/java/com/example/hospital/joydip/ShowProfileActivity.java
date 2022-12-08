@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.hospital.joydip.firebasetemplate.CallbackUserProfile;
@@ -52,6 +53,12 @@ public class ShowProfileActivity extends AppCompatActivity {
             deptTV.setText("Dept :" + info.dept);
             availableTimeTV.setText("Available Time : " + info.availableTime);
             specializationTV.setText("Specialization :" + info.specialization);
+        }
+        else
+        {
+            deptTV.setVisibility(View.GONE);
+            availableTimeTV.setVisibility(View.GONE);
+            specializationTV.setVisibility(View.GONE);
         }
 
     }

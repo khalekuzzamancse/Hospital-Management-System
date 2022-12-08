@@ -25,7 +25,20 @@ android:orientation="vertical"
         android:layout_marginBottom="4dp"
         />
 
+
+
+
 </LinearLayout>
 
-
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:layout_width="wrap_content"
+        android:indeterminate="true"
+        android:layout_gravity="center"
+        android:id="@+id/progrssbar"
+        style="@style/Widget.Material3.CircularProgressIndicator"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="140dp"
+        android:visibility="gone"
+        app:trackColor="#D5238E"
+        />
 </LinearLayout>
