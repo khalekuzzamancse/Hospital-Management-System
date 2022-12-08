@@ -1,6 +1,8 @@
 package com.example.hospital.joydip;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hospital.joydip.firebasetemplate.DomainUserInfo;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
@@ -42,6 +45,33 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
         holder.classTV.setText("Available Time : "+list.get(pos).availableTime);
         holder.subjectTV.setText("Specialization : "+list.get(pos).specialization);
         holder.districtTV.setText("Dept : "+list.get(pos).dept);
+
+        holder.phoneTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    String number = holder.phoneTV.getText().toString().trim();
+                    number=number.substring(11);
+                    Intent intent = new Intent(Intent.ACTION_DIAL);
+                    intent.setData(Uri.parse("tel:" + number));
+                    context.startActivity(intent);
+                }
+
+
+            });
+
+                holder.emailTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    String email = holder.emailTV.getText().toString().trim();
+                    email=email.substring(7);
+                    Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                            "mailto", email, null));
+                    emailIntent.putExtra(Intent.EXTRA_SUBJECT, "This is my subject text");
+                    context.startActivity(Intent.createChooser(emailIntent, null));
+                }
+            });
+
+
     }
 
     @Override
