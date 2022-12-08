@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -31,7 +32,7 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
 
 
     public Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-         View view = LayoutInflater.from(context).
+        View view = LayoutInflater.from(context).
                 inflate(R.layout.recycler_layout_search_result, parent, false);
         Viewholder vh = new Viewholder(view);
         return vh;
@@ -39,37 +40,37 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
 
     @Override
     public void onBindViewHolder(@NonNull Viewholder holder, int pos) {
-        holder.nameTV.setText("Name : "+list.get(pos).name);
-        holder.phoneTV.setText("Phone No : "+list.get(pos).phoneNo);
-        holder.emailTV.setText("Email : "+list.get(pos).email);
-        holder.classTV.setText("Available Time : "+list.get(pos).availableTime);
-        holder.subjectTV.setText("Specialization : "+list.get(pos).specialization);
-        holder.districtTV.setText("Dept : "+list.get(pos).dept);
+        holder.nameTV.setText("Name : " + list.get(pos).name);
+        holder.phoneTV.setText("Phone No : " + list.get(pos).phoneNo);
+        holder.emailTV.setText("Email : " + list.get(pos).email);
+        holder.classTV.setText("Available Time : " + list.get(pos).availableTime);
+        holder.subjectTV.setText("Specialization : " + list.get(pos).specialization);
+        holder.districtTV.setText("Dept : " + list.get(pos).dept);
 
-        holder.phoneTV.setOnClickListener(new View.OnClickListener() {
+        holder.callBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    String number = holder.phoneTV.getText().toString().trim();
-                    number=number.substring(11);
-                    Intent intent = new Intent(Intent.ACTION_DIAL);
-                    intent.setData(Uri.parse("tel:" + number));
-                    context.startActivity(intent);
-                }
+                String number = holder.phoneTV.getText().toString().trim();
+                number = number.substring(11);
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:" + number));
+                context.startActivity(intent);
+            }
 
 
-            });
+        });
 
-                holder.emailTV.setOnClickListener(new View.OnClickListener() {
+        holder.mailBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    String email = holder.emailTV.getText().toString().trim();
-                    email=email.substring(7);
-                    Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                            "mailto", email, null));
-                    emailIntent.putExtra(Intent.EXTRA_SUBJECT, "This is my subject text");
-                    context.startActivity(Intent.createChooser(emailIntent, null));
-                }
-            });
+                String email = holder.emailTV.getText().toString().trim();
+                email = email.substring(7);
+                Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                        "mailto", email, null));
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "This is my subject text");
+                context.startActivity(Intent.createChooser(emailIntent, null));
+            }
+        });
 
 
     }
@@ -81,6 +82,7 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
 
     public class Viewholder extends RecyclerView.ViewHolder {
         TextView nameTV, emailTV, phoneTV, classTV, subjectTV, districtTV;
+        ImageButton callBTN, mailBTN;
 
         public Viewholder(@NonNull View itemView) {
             super(itemView);
@@ -90,6 +92,9 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
             districtTV = itemView.findViewById(R.id.dept_TV);
             classTV = itemView.findViewById(R.id.available_time_tv);
             subjectTV = itemView.findViewById(R.id.specialization_tv);
+            callBTN = itemView.findViewById(R.id.call_BTN);
+            mailBTN = itemView.findViewById(R.id.mail_BTN);
+
         }
     }
 }
