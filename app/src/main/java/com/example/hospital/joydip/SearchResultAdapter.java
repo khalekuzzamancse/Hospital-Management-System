@@ -73,7 +73,15 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
         });
 
 
+
+
     }
+
+    public void setFilterList(List<DomainUserInfo> L) {
+        this.list = L;
+        notifyDataSetChanged();
+    }
+
 
     @Override
     public int getItemCount() {

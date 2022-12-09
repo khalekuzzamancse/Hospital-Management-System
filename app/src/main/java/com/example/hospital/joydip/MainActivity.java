@@ -27,13 +27,14 @@ public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     FirebaseAuthCustom currentUser;
     DomainUserInfo userInfo;
-    TextView allDoctor;
+    TextView allDoctor,search;
 
     CallbackUserProfile callbackUserProfile = new CallbackUserProfile() {
         @Override
         public void getProfile(DomainUserInfo profile) {
             userInfo = profile;
             hideMenuItem();
+
         }
     };
 
@@ -50,6 +51,13 @@ public class MainActivity extends AppCompatActivity {
         //2.1 based on signed in info hide some menu
 
         //getting the login user profile info,
+
+
+        search.setOnClickListener(view -> {
+            Intent intent=new Intent(this,SearchResultActivity.class);
+            SearchResultActivity.from="Main";
+            startActivity(intent);
+        });
 
         FirebaseAuthCustom authCustom = new FirebaseAuthCustom();
         authCustom.getUserInfo(callbackUserProfile);
@@ -118,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.ActivityMain_NavDrawer_NavigationView);
         currentUser = new FirebaseAuthCustom();
         allDoctor=findViewById(R.id.allDc);
+        search=findViewById(R.id.search);
     }
     private void setToolbar() {
         toolbar = findViewById(R.id.ActivityMain_ToolBar);
