@@ -60,13 +60,13 @@ public class SearchResultActivity extends AppCompatActivity {
 
         if (from.equals("Main"))
         {
-            search.setVisibility(View.VISIBLE);
+            search.setVisibility(View.GONE);
             from="Not Main";
         }
 
         else
         {
-            search.setVisibility(View.GONE);
+            search.setVisibility(View.VISIBLE);
             from="Not Main";
         }
         search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
