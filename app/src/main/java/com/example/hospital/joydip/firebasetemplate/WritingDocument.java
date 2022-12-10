@@ -33,5 +33,13 @@ public class WritingDocument {
         snapshotTask.addOnCompleteListener(callbackAddDoc);
     }
 
+    public void updateRequest(String documentName, HashMap<String, Object> updatedData) {
+        // this.callbackResult = callbackResult;
+        CollectionReference cRef = db.collection("Feed");
+        DocumentReference docRef = cRef.document(documentName);
+        Task<Void> snapshotTask = docRef.set(updatedData, SetOptions.merge());
+        //  snapshotTask.addOnCompleteListener(callbackAddDoc);
+    }
+
 
 }

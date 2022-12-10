@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -13,8 +14,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hospital.joydip.firebasetemplate.DomainUserInfo;
+import com.example.hospital.joydip.firebasetemplate.FirebaseAuthCustom;
+import com.example.hospital.joydip.firebasetemplate.FirebaseCustom;
+import com.example.hospital.joydip.firebasetemplate.WritingDocument;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -71,8 +76,18 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
                 context.startActivity(Intent.createChooser(emailIntent, null));
             }
         });
+        holder.request.setOnClickListener(view -> {
+            String to = list.get(pos).email;
+            String from = new FirebaseAuthCustom().getUserEmail();
+            String status = "false";
+            String docId = to + from;
+            HashMap<String, Object> data = new HashMap<>();
+            data.put("from", from);
+            data.put("to", to);
+            data.put("status", status);
+            new WritingDocument().updateRequest(docId, data);
 
-
+        });
 
 
     }
@@ -91,6 +106,7 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
     public class Viewholder extends RecyclerView.ViewHolder {
         TextView nameTV, emailTV, phoneTV, classTV, subjectTV, districtTV;
         ImageButton callBTN, mailBTN;
+        Button request;
 
         public Viewholder(@NonNull View itemView) {
             super(itemView);
@@ -102,6 +118,7 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
             subjectTV = itemView.findViewById(R.id.specialization_tv);
             callBTN = itemView.findViewById(R.id.call_BTN);
             mailBTN = itemView.findViewById(R.id.mail_BTN);
+            request = itemView.findViewById(R.id.requestBTN);
 
         }
     }

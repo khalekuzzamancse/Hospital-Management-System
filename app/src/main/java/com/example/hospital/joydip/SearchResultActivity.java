@@ -29,19 +29,17 @@ public class SearchResultActivity extends AppCompatActivity {
     RecyclerView recycler;
     SearchView search;
     List<DomainUserInfo> list;
-    public static  String from="Not Main";
+    public static String from = "Not Main";
     SearchResultAdapter adapter;
     CircularProgressIndicator progressIndicator;
     CallbackDomainList callback = List -> {
-        list=List;
+        list = List;
         //  progressIndicator.setVisibility(View.INVISIBLE);
         //  Log.i("ReceivedData-AllUserInfo", String.valueOf(List));
         progressIndicator.setVisibility(View.GONE);
         if (List.isEmpty())
             showSnackbar();
         updateAdapter(List);
-
-
 
 
     };
@@ -51,23 +49,19 @@ public class SearchResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_result_activity);
         initialize();
-       // setToolbar();
+        // setToolbar();
         UserInfo db = new UserInfo();
         db.getDoctors(callback);
         progressIndicator.setVisibility(View.VISIBLE);
 
         search.clearFocus();
 
-        if (from.equals("Main"))
-        {
+        if (from.equals("Main")) {
             search.setVisibility(View.GONE);
-            from="Not Main";
-        }
-
-        else
-        {
+            from = "Not Main";
+        } else {
             search.setVisibility(View.VISIBLE);
-            from="Not Main";
+            from = "Not Main";
         }
         search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -81,7 +75,6 @@ public class SearchResultActivity extends AppCompatActivity {
                 return true;
             }
         });
-
 
 
 //
@@ -107,6 +100,7 @@ public class SearchResultActivity extends AppCompatActivity {
             adapter.setFilterList(L);
         }
     }
+
     void updateAdapter(List<DomainUserInfo> List) {
         adapter = new SearchResultAdapter(this, List);
         recycler.setLayoutManager(new LinearLayoutManager(SearchResultActivity.this));
@@ -136,8 +130,8 @@ public class SearchResultActivity extends AppCompatActivity {
     private void initialize() {
         toolbar = findViewById(R.id.NonHomeActivity_Toolbar);
         recycler = findViewById(R.id.recycler);
-        progressIndicator=findViewById(R.id.progrssbar);
-        search=findViewById(R.id.searchView);
+        progressIndicator = findViewById(R.id.progrssbar);
+        search = findViewById(R.id.searchView);
 
     }
 

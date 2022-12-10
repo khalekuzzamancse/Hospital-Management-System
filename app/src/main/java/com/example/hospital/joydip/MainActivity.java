@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     FirebaseAuthCustom currentUser;
     DomainUserInfo userInfo;
-    TextView allDoctor,search;
+    TextView allDoctor,search,feed;
 
     CallbackUserProfile callbackUserProfile = new CallbackUserProfile() {
         @Override
@@ -52,15 +52,22 @@ public class MainActivity extends AppCompatActivity {
 
         //getting the login user profile info,
 
+        FirebaseAuthCustom authCustom = new FirebaseAuthCustom();
+        authCustom.getUserInfo(callbackUserProfile);
 
+
+        if(FirebaseAuth.getInstance().getCurrentUser()!=null)
+        Log.i("CurrentUser",FirebaseAuth.getInstance().getCurrentUser().getEmail());
+
+            feed.setOnClickListener(view -> {
+                startActivity(new  Intent(this,FeedActivity.class));
+            });
         search.setOnClickListener(view -> {
             Intent intent=new Intent(this,SearchResultActivity.class);
             SearchResultActivity.from="Main";
             startActivity(intent);
         });
 
-        FirebaseAuthCustom authCustom = new FirebaseAuthCustom();
-        authCustom.getUserInfo(callbackUserProfile);
         allDoctor.setOnClickListener(view -> {
             startActivity(new Intent(this,SearchResultActivity.class));
         });
@@ -70,8 +77,11 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
                 if (id == R.id.login) {
-                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    Intent intent = getIntent();
+                    finish();
                     startActivity(intent);
+                    Intent intent1 = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(intent1);
                 } else if (id == R.id.about_us) {
                     Intent intent = new Intent(MainActivity.this, AboutUsActivity.class);
                     startActivity(intent);
@@ -125,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
         currentUser = new FirebaseAuthCustom();
         allDoctor=findViewById(R.id.allDc);
         search=findViewById(R.id.search);
+        feed=findViewById(R.id.feedTV);
     }
     private void setToolbar() {
         toolbar = findViewById(R.id.ActivityMain_ToolBar);
@@ -135,7 +146,6 @@ public class MainActivity extends AppCompatActivity {
         toggle.syncState();
 
     }
-
 
 
 }

@@ -113,6 +113,18 @@
         android:textColor="@color/black"
         android:textSize="16sp"
         />
+    <com.google.android.material.button.MaterialButton
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_weight="5"
+        android:layout_gravity="end"
+        android:text="Send Request"
+        android:id="@+id/requestBTN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:gravity="end|bottom"
+        android:textAllCaps="false"
+        />
 
 
 </LinearLayout>

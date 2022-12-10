@@ -33,6 +33,9 @@ public class LoginActivity extends AppCompatActivity {
         loginBTN.setOnClickListener(view -> {
             getUserInfo();
             new FirebaseAuthCustom().signIn(emailStr, passwordStr);
+            Intent intent = getIntent();
+            finish();
+            startActivity(intent);
            startActivity(new Intent(this, MainActivity.class));
         });
 registerBtn.setOnClickListener(view -> {
