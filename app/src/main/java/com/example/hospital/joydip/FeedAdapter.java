@@ -46,9 +46,9 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.Viewholder> {
     @Override
     public void onBindViewHolder(@NonNull Viewholder holder, int pos) {
         String msg="";
-        //if(isPatient)
+        if(!isPatient)
        msg="A Request From: "+list.get(pos).from;
-     //   else
+        else
         {
             msg="A Request Sent To: "+list.get(pos).to;
             if(list.get(pos).status.equals("true"))
@@ -60,7 +60,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.Viewholder> {
         }
         holder.nameFrom.setText(msg);
         if(list.get(pos).status.equals("true"))
-            holder.request.setText("Accepted");
+            holder.request.setText("Done");
 
         ///
         holder.request.setOnClickListener(view -> {

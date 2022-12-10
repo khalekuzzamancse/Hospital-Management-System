@@ -48,9 +48,17 @@ public class FeedActivity extends AppCompatActivity {
             public void getProfile(DomainUserInfo profile) {
                 info = profile;
                 if(info.userType.equals("Doctor"))
+                {
                     feed.getFeedDoctor(callback);
+                    FeedAdapter.isPatient=false;
+                }
+
                 else
+                {
                     feed.getFeedPatient(callback);
+                    FeedAdapter.isPatient=true;
+                }
+
 
             }
         };
